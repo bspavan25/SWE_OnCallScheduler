@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href= {% static 'css/global.css' %}>
+    <title>My Project</title>
+  </head>
+
+  <body class="bodyContainer">
+    {% block content %} {% endblock content %}
+  </body>
+</html>
