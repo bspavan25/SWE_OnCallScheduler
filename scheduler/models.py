@@ -15,7 +15,7 @@ class Availability(models.Model):
     numberOfHours = models.IntegerField()
 
     def __str__(self):
-        return self.employee.name + " " + self.numberOfHours
+        return self.employee.name + " " + str(self.numberOfHours)
 
 class Skills(models.Model):
     skill_id = models.IntegerField()

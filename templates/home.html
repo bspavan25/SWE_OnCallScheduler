@@ -1,11 +1,60 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 
-<h2>Content for My Employee: {{emp1}}</h2>
+<h2>OnCallScheduler</h2>
 
-<form action="add" method="post">
-  {% csrf_token %} Enter 1st num : <input type="text" name="num1" /><br />
-  Enter 2nd num : <input type="text" name="num2" /><br />
-  <input type="submit" />
+<form>
+  {% csrf_token %}
+  <section class="outer_section">
+    {% comment %}
+    <div>
+      <img src = {% static 'images/test.jpg' %} width = "200" height = "200"
+      alt="Myimage">
+    </div>
+    {% endcomment %}
+    <div class="days_col_div">
+      <table>
+        <tr>
+          <th>DAY</th>
+        </tr>
+        <tr>
+          <th>Monday</th>
+        </tr>
+        <tr>
+          <th>Tuesday</th>
+        </tr>
+        <tr>
+          <th>Wednesday</th>
+        </tr>
+        <tr>
+          <th>Thursday</th>
+        </tr>
+        <tr>
+          <th>Friday</th>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+        </tr>
+        {% for rowval in scheduleList %}
+        <tr>
+          {% for val in rowval %}
+          <td>{{val}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </section>
 </form>
-<img src = {% static 'images/test.jpg' %} width = "200" height = "200" alt="My
-image"> {% endblock content %}
+
+{% endblock content %}
