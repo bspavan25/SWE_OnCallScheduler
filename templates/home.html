@@ -1,58 +1,63 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 
-<h2>OnCallScheduler</h2>
-
 <form>
   {% csrf_token %}
-  <section class="outer_section">
+  <section class="outer-section">
     {% comment %}
     <div>
       <img src = {% static 'images/test.jpg' %} width = "200" height = "200"
       alt="Myimage">
     </div>
     {% endcomment %}
-    <div class="days_col_div">
-      <table>
-        <tr>
-          <th>DAY</th>
-        </tr>
-        <tr>
-          <th>Monday</th>
-        </tr>
-        <tr>
-          <th>Tuesday</th>
-        </tr>
-        <tr>
-          <th>Wednesday</th>
-        </tr>
-        <tr>
-          <th>Thursday</th>
-        </tr>
-        <tr>
-          <th>Friday</th>
-        </tr>
-      </table>
-    </div>
-    <div>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          <th>6</th>
-          <th>7</th>
-          <th>8</th>
-        </tr>
-        {% for rowval in scheduleList %}
-        <tr>
-          {% for val in rowval %}
-          <td>{{val}}</td>
+    <div class="tables-section">
+      <div class="left-table">
+        <table class="styled-table">
+          <tr>
+            <th>DAY</th>
+          </tr>
+          <tr>
+            <th>Monday</th>
+          </tr>
+          <tr>
+            <th>Tuesday</th>
+          </tr>
+          <tr>
+            <th>Wednesday</th>
+          </tr>
+          <tr>
+            <th>Thursday</th>
+          </tr>
+          <tr>
+            <th>Friday</th>
+          </tr>
+        </table>
+      </div>
+      <div class="right-table">
+        <table class="styled-table">
+          <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+          </tr>
+          {% for rowval in scheduleList %}
+          <tr>
+            {% for val in rowval %}
+            <td>{{val}}</td>
+            {% endfor %}
+          </tr>
           {% endfor %}
-        </tr>
-        {% endfor %}
-      </table>
+        </table>
+      </div>
+    </div>
+    <div class="buttons-group">
+      <button class="button">Change Availability</button>
+      <button class="button">Add Skills</button>
+      <button class="button">Modify Employees</button>
     </div>
   </section>
 </form>
