@@ -1,4 +1,5 @@
 {% extends 'admin/base.html' %} {% block extrahead %}{{ block.super }}
+
 <style>
   :root {
     --primary: #001857;
@@ -6,12 +7,28 @@
     --accent: #001857;
     --primary-fg: #f1f1ed;
     --header-color: #f1f1ed;
-    --body-bg: white;
-    --body-quiet-color: #001857;
+    {% comment %} --body-bg: white; {% endcomment %}
+    {% comment %} --body-fg: white; {% endcomment %}
+
+    {% comment %} --body-quiet-color: #001857; {% endcomment %}
+    {% comment %} --hairline-color: white; {% endcomment %}
   }
 
   #recent-actions-module {
     display: none;
+  }
+
+  .app-auth{
+    display:none;
+  }
+
+  #header {
+    border: 1.5px solid #001857;
+  }
+
+  #site-name {
+    font-size: 30px !important;
+    font-weight: bold;
   }
 </style>
 {% endblock %}

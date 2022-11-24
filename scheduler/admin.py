@@ -1,8 +1,20 @@
 from django.contrib import admin
-from .models import *
+from scheduler.models import Employee, Availability, Skills
 
 # Register your models here.
 
-admin.site.register(Employee)
-admin.site.register(Availability)
-admin.site.register(Skills)
+class AdminEmployee(admin.ModelAdmin):
+    model = Employee
+    list_display = ('id', 'name', 'skills')
+
+class AdminAvailability(admin.ModelAdmin):
+    model = Availability
+    list_display = ('id','employee', 'numberOfHours')
+
+class AdminSkills(admin.ModelAdmin):
+    model = Skills
+    list_display = ('id','skill_name')
+
+admin.site.register(Employee, AdminEmployee)
+admin.site.register(Availability, AdminAvailability)
+admin.site.register(Skills, AdminSkills)

@@ -55,9 +55,21 @@
       </div>
     </div>
     <div class="buttons-group">
-      <button class="button">Change Availability</button>
-      <button class="button">Add Skills</button>
-      <button class="button">Modify Employees</button>
+      <div>
+        <form action="http://127.0.0.1:8000/admin/scheduler/skills/">
+          <input class="button" type="submit" value="Add Skills" />
+        </form>
+      </div>
+      <div>
+        <form action="http://127.0.0.1:8000/admin/scheduler/availability/">
+          <input class="button" type="submit" value="Change Availability" />
+        </form>
+      </div>
+      <div>
+        <form action=" http://127.0.0.1:8000/admin/scheduler/employee/">
+          <input class="button" type="submit" value="Modify Employees" />
+        </form>
+      </div>
     </div>
   </section>
 </form>
