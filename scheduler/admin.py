@@ -9,7 +9,7 @@ class AdminEmployee(admin.ModelAdmin):
 
 class AdminAvailability(admin.ModelAdmin):
     model = Availability
-    list_display = ('id','employee', 'numberOfHours')
+    list_display = ('id','employee', 'number_of_hours')
 
 class AdminSkills(admin.ModelAdmin):
     model = Skills

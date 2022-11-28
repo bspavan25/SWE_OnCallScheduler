@@ -12,10 +12,10 @@ class Employee(models.Model):
 
 class Availability(models.Model):
     employee = models.ForeignKey(Employee, on_delete = models.CASCADE)
-    numberOfHours = models.IntegerField()
+    number_of_hours = models.IntegerField()
 
     def __str__(self):
-        return self.employee.name + " " + str(self.numberOfHours)
+        return self.employee.name + " " + str(self.number_of_hours)
 
 class Skills(models.Model):
     skill_id = models.IntegerField()
@@ -23,5 +23,3 @@ class Skills(models.Model):
 
     def __str__(self):
         return self.skill_name
-
-    
