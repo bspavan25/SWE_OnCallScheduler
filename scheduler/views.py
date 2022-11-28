@@ -8,15 +8,16 @@ from collections import defaultdict
 #My view functions
 def home(request):
     scheduleList = scheduleAlgorithm()
+    print(scheduleList)
     return render(request, 'home.html', {'scheduleList' : scheduleList})
 
 #Scheduling alogorithm
 def scheduleAlgorithm():
     employees_list = Employee.objects.all() #input 1
     availability_list = Availability.objects.all() #input 2
-    print('raja')
-    print(employees_list)
-    print(availability_list)
+    #print('raja')
+    #print(employees_list)
+    #print(availability_list)
     skills_map = defaultdict(list)
     availability_map = defaultdict(lambda:0)
 
@@ -31,10 +32,10 @@ def scheduleAlgorithm():
 
 #Helper functions
 def scheduleAlgorithmHelper(skills_map, availability_map):
-    print('skills_map')
-    print(skills_map)
-    print('availability_map')
-    print(availability_map)
+    #print('skills_map')
+    #print(skills_map)
+    #print('availability_map')
+    #print(availability_map)
     adjusted_skills_map = defaultdict(list)
     for i in skills_map:
         j = availability_map[i]//4
@@ -103,7 +104,7 @@ def generate(nums, arr, i, N, ans, skills_map, buffer_pairs):
 def generate_subsets(skills_map):
     ans = []
     temp = sorted(skills_map, key=lambda k: len(skills_map[k]))
-    print(temp)
+    #print(temp)
     temp_skills = []
     temp_emp = []
     
@@ -132,9 +133,9 @@ def generate_subsets(skills_map):
 
     final_ans.sort()
 
-    print("final ans")
-    print(final_ans)
-    print(visited)
+    #print("final ans")
+    #print(final_ans)
+    #print(visited)
 
     for i in range(len(buffer_pairs)):
         check = True
