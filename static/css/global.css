@@ -313,17 +313,17 @@ footer {
 }
 
 .left-table table {
-  width: 200px;
+  width: 150px;
   height: 800px;
 }
 
 .right-table table {
-  width: 750px;
+  width: 800px;
   height: 800px;
 }
 
 tr {
-  height: 90px;
+  height: 40px;
 }
 
 .styled-table th {
@@ -365,6 +365,17 @@ tr {
   align-items: center;
 }
 
+.outer-section-main-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  border: 1px solid black;
+  padding: 20px;
+  height: 600px;
+  align-items: center;
+}
+
 .tables-section {
   display: flex;
   flex-direction: row;
@@ -376,4 +387,31 @@ tr {
 
 .buttons-group {
   display: flex;
+  gap: 1em; 
+}
+
+.cta-button {
+  display: inline-block;
+  width: 72%;
+  height: 15%;
+  background-color: var(--primary-background-color);
+  color: var(--primary-color-dark);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 15px;
+  border: 0px;
+  align-items: center;
+}
+
+.cta-button:hover {
+  width: 72%;
+  height: 15%;
+  color: var(--secondary-background-color);
+  border: 3px solid var(--secondary-background-color);
+  background-color: var(--primary-color-dark);
+}
+
+.cta-label {
+  font-family: var(--title-font-family);
+  font-size: 150%;
 }

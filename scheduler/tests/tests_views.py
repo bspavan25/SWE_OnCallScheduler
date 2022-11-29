@@ -9,6 +9,18 @@ class TestViews(TestCase):
     def setUp(self):
         self.client = Client()
         self.home_url = reverse('home')
+        Skills.objects.create(
+            skill_id = 1,
+            skill_name = 'Java'
+        )
+
+    # Test 0
+    def test_home_0_GET(self):
+        client = Client()
+        response = client.get('')
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'mainHome.html')
 
     # Test 1
     def test_home_1_GET(self):
@@ -96,7 +108,6 @@ class TestViews(TestCase):
 
     # Test 2 - Single Employee with incomplete skills & <40 hours
     def test_2(self):
-
         # create the test employees
         Employee.objects.create(
             employee_id = 1001,
@@ -108,8 +119,7 @@ class TestViews(TestCase):
             employee = Employee.objects.get(employee_id = 1001),
             number_of_hours = 12
         )
-
-        self.assertEquals(str(scheduleAlgorithm()), "[['TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *'], ['TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ']]")
+        self.assertEquals(str(scheduleAlgorithm()), "[['TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)'], ['TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ']]")
 
     # Test 3 - Single Employee with 40 Hours Availability & All Skills
     def test_3(self):
@@ -142,8 +152,8 @@ class TestViews(TestCase):
             employee = Employee.objects.get(employee_id = 1001),
             number_of_hours = 40
         )
-
-        self.assertEquals(str(scheduleAlgorithm()), "[['TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *'], ['TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *'], ['TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *'], ['TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *'], ['TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *', 'TE1 *']]")
+        
+        self.assertEquals(str(scheduleAlgorithm()), "[['TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)'], ['TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)'], ['TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)'], ['TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)'], ['TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)', 'TE1 (*)']]")
 
     # Test 5 - Pair highest and lowest
     def test_5(self):
@@ -180,8 +190,7 @@ class TestViews(TestCase):
             number_of_hours = 8
         )
 
-        self.assertEquals(str(scheduleAlgorithm()), "[['TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 '], ['TE2 *', 'TE2 *', 'TE2 *', 'TE2 *', 'TE2 *', 'TE2 *', 'TE2 *', 'TE2 *'], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ']]")
-
+        self.assertEquals(str(scheduleAlgorithm()), "[['TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 ', 'TE1 TE3 '], ['TE2 (*)', 'TE2 (*)', 'TE2 (*)', 'TE2 (*)', 'TE2 (*)', 'TE2 (*)', 'TE2 (*)', 'TE2 (*)'], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ']]")
     
     # Test 6 - Pair highest and lowest
     def test_6(self):
@@ -228,6 +237,4 @@ class TestViews(TestCase):
             number_of_hours = 8
         )
 
-        print("-------------------------")
-        print(scheduleAlgorithm())
         self.assertEquals(str(scheduleAlgorithm()), "[['TE1 TE2 TE3 TE4 ', 'TE1 TE2 TE3 TE4 ', 'TE1 TE2 TE3 TE4 ', 'TE1 TE2 TE3 TE4 ', 'TE1 TE2 TE3 TE4 ', 'TE1 TE2 TE3 TE4 ', 'TE1 TE2 TE3 TE4 ', 'TE1 TE2 TE3 TE4 '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A '], ['N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ', 'N/A N/A ']]")

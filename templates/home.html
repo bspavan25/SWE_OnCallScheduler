@@ -1,77 +1,80 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 
 <form>
-  {% csrf_token %}
-  <section class="outer-section">
-    {% comment %}
-    <div>
-      <img src = {% static 'images/test.jpg' %} width = "200" height = "200"
-      alt="Myimage">
-    </div>
-    {% endcomment %}
-    <div class="tables-section">
-      <div class="left-table">
-        <table class="styled-table">
-          <tr>
-            <th>DAY</th>
-          </tr>
-          <tr>
-            <th>Monday</th>
-          </tr>
-          <tr>
-            <th>Tuesday</th>
-          </tr>
-          <tr>
-            <th>Wednesday</th>
-          </tr>
-          <tr>
-            <th>Thursday</th>
-          </tr>
-          <tr>
-            <th>Friday</th>
-          </tr>
-        </table>
-      </div>
-      <div class="right-table">
-        <table class="styled-table">
-          <tr>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-          </tr>
-          {% for rowval in scheduleList %}
-          <tr>
-            {% for val in rowval %}
-            <td>{{val}}</td>
-            {% endfor %}
-          </tr>
-          {% endfor %}
-        </table>
-      </div>
-    </div>
-    <div class="buttons-group">
-      <div>
-        <form action="http://127.0.0.1:8000/admin/scheduler/skills/">
-          <input class="button" type="submit" value="Add Skills" />
-        </form>
-      </div>
-      <div>
-        <form action="http://127.0.0.1:8000/admin/scheduler/availability/">
-          <input class="button" type="submit" value="Change Availability" />
-        </form>
-      </div>
-      <div>
-        <form action=" http://127.0.0.1:8000/admin/scheduler/employee/">
-          <input class="button" type="submit" value="Modify Employees" />
-        </form>
-      </div>
-    </div>
-  </section>
+	{% csrf_token %}
+	<section class="outer-section">
+		{% comment %}
+		<div><img src = {% static 'images/test.jpg' %} width = "200" height = "200" alt="Myimage"></div>
+		{% endcomment %}
+		<div class="tables-section">
+			<div class="left-table">
+				<table class="styled-table">
+					<tr>
+						<th>DAY</th>
+					</tr>
+					<tr>
+						<th>08:00 - 09:00</th>
+					</tr>
+					<tr>
+						<th>09:00 - 10:00</th>
+					</tr>
+					<tr>
+						<th>10:00 - 11:00</th>
+					</tr>
+					<tr>
+						<th>11:00 - 12:00</th>
+					</tr>
+					<tr>
+						<th>12:00 - 13:00</th>
+					</tr>
+					<tr>
+						<th>13:00 - 14:00</th>
+					</tr>
+					<tr>
+						<th>14:00 - 15:00</th>
+					</tr>
+					<tr>
+						<th>15:00 - 16:00</th>
+					</tr>
+				</table>
+			</div>
+			<div class="right-table">
+				<table class="styled-table">
+					<tr>
+						<th>Monday</th>
+						<th>Tuesday</th>
+						<th>Wednesday</th>
+						<th>Thursday</th>
+						<th>Friday</th>
+					</tr>
+					{% for rowval in scheduleList %}
+					<tr>
+						{% for val in rowval %}
+						<td>{{val}}</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+		<div class="buttons-group">
+			<div>
+				<a href="http://127.0.0.1:8000/admin/scheduler/skills/" target="_blank">
+					<input class="button" type="submit" value="Add Skills" />
+				</a>
+			</div>
+			<div>
+				<a href="http://127.0.0.1:8000/admin/scheduler/availability/" target="_blank">
+					<input class="button" type="submit" value="Change Availability" />
+				</a>
+			</div>
+			<div>
+				<a href=" http://127.0.0.1:8000/admin/scheduler/employee/" target="_blank">
+					<input class="button" type="submit" value="Modify Employees" />
+				</a>
+			</div>
+		</div>
+	</section>
 </form>
 
 {% endblock content %}

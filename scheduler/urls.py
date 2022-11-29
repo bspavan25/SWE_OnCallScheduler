@@ -7,5 +7,6 @@ admin.site.index_title = 'Scheduler Administration'
 admin.site.site_title = 'OnCall Scheduler'
 
 urlpatterns= [
-    path('', views.home, name="home")
-]
+    path('', views.mainHome, name="mainHome"),
+    path('home', views.home, name="home")
+] 

@@ -1,67 +1,35 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href= {% static 'css/global.css' %}>
-    <link
-      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/884a40999c.js"
-      crossorigin="anonymous"
-    ></script>
+	<head>
+		<link rel="stylesheet" href= {% static 'css/global.css' %}>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
+		<script src="https://kit.fontawesome.com/884a40999c.js" crossorigin="anonymous"></script>
 
-    <title>OnCall Scheduler</title>
-  </head>
-  <header class="container">
-    <section class="bookstore-logo">
-      <div class="text-logo">
-        <i class="fas fa-calendar-alt"></i>
-        OnCall Scheduler
-      </div>
-    </section>
-    <section>
-      <form action="http://127.0.0.1:8000/admin/">
-        <input class="button" type="submit" value="Admin Page" />
-      </form>
-    </section>
-  </header>
+		<title>OnCall Scheduler</title>
+	</head>
+	<header class="container">
+		<section class="bookstore-logo">
+			<div class="text-logo">
+				<i class="fas fa-calendar-alt"></i>
+				OnCall Scheduler
+			</div>
+		</section>
+		<section>
+			<a href="http://127.0.0.1:8000/admin/" target="_blank">
+				<input class="button" type="submit" value="Manager - SID" />
+			</a>
+		</section>
+	</header>
 
-  <body class="bodyContainer">
-    {% block content %} {% endblock content %}
-  </body>
-  <footer>
-    <section class="footer-main-frame">
-      <div>
-        <section class="social-media-icons links">
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-linkedin"></i>
-          <i class="fa-brands fa-instagram"></i>
-        </section>
-      </div>
-      <div class="signup-and-links">
-        <section>
-          <button class="news-letter-button button">
-            SIGN UP - News Letter
-          </button>
-        </section>
-        <section class="about-links links">
-          About | Privacy | Terms | Help | Contact
-        </section>
-      </div>
-      <div class="address-part">
-        <div>
-          <i class="fa-solid fa-location-pin"></i> Stroubles Creek<br />
-          Blacksburg<br />
-          VA 24060
-        </div>
-      </div>
-    </section>
-    <section class="copy-rights-bar">
-      <i class="fa-regular fa-copyright"></i>
-      All Rights Reserverd.
-    </section>
-  </footer>
+	<body class="bodyContainer">
+		{% block content %} {% endblock content %}
+	</body>
+	<footer>
+		<section class="footer-main-frame"></section>
+		<section class="copy-rights-bar">
+			<i class="fa-regular fa-copyright"></i>
+			All Rights Reserverd.
+		</section>
+	</footer>
 </html>

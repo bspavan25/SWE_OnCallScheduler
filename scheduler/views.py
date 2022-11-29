@@ -6,10 +6,14 @@ from .models import *
 from collections import defaultdict
 
 #My view functions
+def mainHome(request):
+    return render(request, 'mainHome.html')
+
 def home(request):
     scheduleList = scheduleAlgorithm()
-    print(scheduleList)
-    return render(request, 'home.html', {'scheduleList' : scheduleList})
+    # print(scheduleList)
+    transposed_list = list(map(list, zip(*scheduleList)))
+    return render(request, 'home.html', {'scheduleList' : transposed_list})
 
 #Scheduling alogorithm
 def scheduleAlgorithm():
@@ -57,7 +61,7 @@ def scheduleAlgorithmHelper(skills_map, availability_map):
     for i in range(len(buffer_pairs)):
         val = ''
         for j in range(len(buffer_pairs[i])):
-            val += Employee.objects.get(id=buffer_pairs[i][j][0]).name + " " + "*"
+            val += Employee.objects.get(id=buffer_pairs[i][j][0]).name + " " + "(*)"
         buffer_pairs[i] = val
     
     #length of 10 since each slot is 4 hours long
