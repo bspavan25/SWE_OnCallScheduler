@@ -53,10 +53,12 @@ def scheduleAlgorithmHelper(skills_map, availability_map):
     #print(len(buffer_pairs))
 
     for i in range(len(output_pairs)):
-        val = ''
-        for j in range(len(output_pairs[i])):
-            val += Employee.objects.get(id=output_pairs[i][j][0]).name + " "
-        output_pairs[i] = val
+            val = ''
+            for j in range(len(output_pairs[i])):
+                val += Employee.objects.get(id=output_pairs[i][j][0]).name 
+                if j!=len(output_pairs[i])-1:
+                    val += ", "
+            output_pairs[i] = val
 
     for i in range(len(buffer_pairs)):
         val = ''
